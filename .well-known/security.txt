@@ -1,0 +1,3 @@
+Contact: mailto:johannes.arnold@stud.uni-hannover.de
+Preferred-Languages: en, de
+Canonical: https://wahl.avfrisia.de/.well-known/security.txt
