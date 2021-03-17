@@ -1,16 +1,15 @@
-<!-- Copyright (c) Johannes Arnold 2020 -->
-
 <?php
 
 require "util.php";
 
 $file = "votes/".$S_POST["pin"].".json";
 
-// read old vote data
-$votes = json_decode(file_get_contents($file));
+$votes = [];
 
-// make array if it isn't (e.g. file hasn't been created)
-is_array($votes) ? : $votes = array();
+if (file_exists($file)) {
+    // read old vote data
+    $votes = json_decode(file_get_contents($file));
+}
 
 // create vote data
 $vote = [

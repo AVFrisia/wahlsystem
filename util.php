@@ -1,25 +1,26 @@
 <?php
-  if(!isset($_SESSION)) {
-      session_start();
-  }
+if(!isset($_SESSION)) {
+    session_start();
+}
   
   // ALWAYS sanitize input ;)
   $S_POST  = filter_input_array(INPUT_POST);
   $S_GET  = filter_input_array(INPUT_GET);
   
-  function pin($length) {
+function pin($length)
+{
     if ($length == 0) {
         return;
     }
     return rand(0, 9) . pin($length - 1);
-  }
+}
 
   // auto delete files
   $days = 7;
   $path = './votes/';
 
   // Open the directory
-  if ($handle = opendir($path)) {
+if ($handle = opendir($path)) {
     // Loop through the directory
     while (false !== ($file = readdir($handle))) {
         // Check the file we're doing is actually a file
@@ -31,5 +32,5 @@
             }
         }
     }
-  }
+}
 ?>

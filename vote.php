@@ -1,4 +1,3 @@
-<!-- Copyright (c) Johannes Arnold 2020 -->
 <?php
   require "util.php";
 ?>
@@ -7,7 +6,7 @@
   <head>
     <title>Wahl</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -32,6 +31,6 @@
         <i>Juristen:</i> bitte diese Seite <b>nicht</b> neu laden!
       </p>
     </div>
-    <?php include "footer.php" ?>
+    <?php require "footer.php" ?>
   </body>
 </html>
