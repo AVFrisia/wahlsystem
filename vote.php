@@ -31,6 +31,6 @@
         <i>Juristen:</i> bitte diese Seite <b>nicht</b> neu laden!
       </p>
     </div>
-    <?php include "footer.php" ?>
+    <?php require "footer.php" ?>
   </body>
 </html>

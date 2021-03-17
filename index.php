@@ -1,6 +1,6 @@
 <?php
   require "util.php";
-  ?>
+?>
 <!DOCTYPE html>
 <html lang="de">
   <head>
@@ -40,6 +40,6 @@
         <p><i>&#8213; Emperor Palpatine</i></p>
       </div>
     </div>
-    <?php include "footer.php"; ?>
+    <?php require "footer.php"; ?>
   </body>
 </html>

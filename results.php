@@ -27,63 +27,63 @@
         
         // display only if we have valid votes
         if ($votes) {
-          // shuffle
-          shuffle($votes);
+            // shuffle
+            shuffle($votes);
           
-          // we want to count our "bad" votes, e.g. one person votes twice
-          $sess_ids = array();
-          $bad_votes = 0;
+            // we want to count our "bad" votes, e.g. one person votes twice
+            $sess_ids = array();
+            $bad_votes = 0;
 
-          // additional variables for statistics
-          $adh = '77.23.48.125';
-          $votes_external = 0;
+            // additional variables for statistics
+            $adh = '77.23.48.125';
+            $votes_external = 0;
 
-          echo '<div class="pure-g">';
+            echo '<div class="pure-g">';
            
-          // loop for each vote
-          foreach ($votes as $vote) {
-            // extract our data
-            $id = $vote['session-id'];
-            $contents = ucwords(strtolower($vote['contents']));
+            // loop for each vote
+            foreach ($votes as $vote) {
+                // extract our data
+                $id = $vote['session-id'];
+                $contents = ucwords(strtolower($vote['contents']));
 
-            if (strcmp($vote['ip'], $adh)) {
-              $votes_external++;
+                if (strcmp($vote['ip'], $adh)) {
+                    $votes_external++;
+                }
+
+                echo "<div class='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-3'>";
+
+                // check if this vote has been cast after another by the same person
+                if (in_array($id, $sess_ids)) {
+                    echo "<div class='card error'>".$contents."</div>";
+                    $bad_votes++;
+                } else {
+                    echo "<div class='card' onclick='this.classList.toggle(\"counted\");'>".$contents."</div>";
+                    array_push($sess_ids, $id);
+                }
+
+                echo '</div>';
             }
-
-            echo "<div class='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-3'>";
-
-            // check if this vote has been cast after another by the same person
-            if (in_array($id, $sess_ids)) {
-              echo "<div class='card error'>".$contents."</div>";
-              $bad_votes++;
-            } else {
-              echo "<div class='card' onclick='this.classList.toggle(\"counted\");'>".$contents."</div>";
-              array_push($sess_ids, $id);
-            }
-
-            echo '</div>';
-          }
           
-          echo '</div>';
+            echo '</div>';
 
         } else {
-          echo('<h2>Wahl existiert nicht!</h2>');
+            echo('<h2>Wahl existiert nicht!</h2>');
         } 
-      ?>
+        ?>
       <?php
         if ($votes) {
-          if ($bad_votes > 0) {
-            echo "<p><b>Achtung:</b> ".$bad_votes." Stimme(n) wurden von einem Wähler neu gewählt und in <span class='error'>rot</span> markiert.</p>";
-          }
-          echo "<h2>Statistiken</h2>";
-          echo "<p>Anzahl stimmen: ".count($votes)."</p>";
-          echo "<p>Davon außerhalb adH: ".$votes_external."</p>";
+            if ($bad_votes > 0) {
+                echo "<p><b>Achtung:</b> ".$bad_votes." Stimme(n) wurden von einem Wähler neu gewählt und in <span class='error'>rot</span> markiert.</p>";
+            }
+            echo "<h2>Statistiken</h2>";
+            echo "<p>Anzahl stimmen: ".count($votes)."</p>";
+            echo "<p>Davon außerhalb adH: ".$votes_external."</p>";
         }
-      ?>
+        ?>
     </div>
     <script>
       eva.replace();
     </script>
-    <?php include "footer.php" ?>
+    <?php require "footer.php" ?>
   </body>
 </html>
