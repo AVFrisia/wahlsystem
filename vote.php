@@ -1,4 +1,3 @@
-<!-- Copyright (c) Johannes Arnold 2020 -->
 <?php
   require "util.php";
 ?>
