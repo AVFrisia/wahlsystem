@@ -18,7 +18,7 @@
           <div class="l-box">
             <h2>Wahl Beitreten</h2>
             <p>Ich habe schon einen PIN für einen Wahlgang bekommen.</p>
-            <form class="pure-form pure-form-stacked" action="vote.php" method="post">
+            <form class="pure-form pure-form-stacked" action="vote.php" method="get">
               <input type="number" class="pure-input-1" name="pin" placeholder="PIN" required=""/>
               <button type="submit" class="pure-button pure-input-1 pure-button-primary">Los</button>
             </form>
@@ -28,7 +28,7 @@
           <div class="l-box">
             <h2>Neuen Wahlgang Starten</h2>
             <p>Ich möchte einen neuen Wahlgang starten.</p>
-            <form class="pure-form pure-form-stacked" action="vote.php" method="post">
+            <form class="pure-form pure-form-stacked" action="create-vote.php" method="post">
               <input type="hidden" name="pin" value="<?php echo pin(4) ?>" />
               <button type="submit" class="pure-button pure-input-1">Los</button>
             </form>
