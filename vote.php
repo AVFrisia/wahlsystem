@@ -12,12 +12,39 @@
   <body>
     <div class="content">
       <h1>Wahlsystem</h1>
-      <h2>Pin: <?php echo $S_POST["pin"];?></h2>
+      <h2>Pin: <?php echo $S_GET["pin"];?></h2>
       <form class="pure-form pure-form-stacked" action="record-vote.php" method="post">
-        <textarea class="pure-input-1" name="votedata" placeholder="Stimme..."></textarea>
-        <input type="hidden" name="pin" value="<?php echo $S_POST["pin"];?>" />
+        <input type="hidden" name="pin" value="<?php echo $S_GET["pin"];?>" />
+        
+        <?php
+            // here we display different types of voting UIs
+            $type = get_type($S_GET["pin"]);
+            
+            switch ($type) {
+                case "grade":
+                    ?>
+                        <input type="number" name="votedata" min="1" max="6">
+                    <?php
+                    break;
+                case "binary":
+                    ?>
+                        <div class="pure-controls">
+                            <label for="yes-vote" class="pure-radio">
+                            <input type="radio" id="yes-vote" name="votedata" value="Dafür" checked> Stimme Dafür</label>
+                            <label for="no-vote" class="pure-radio">
+                            <input type="radio" id="no-vote" name="votedata" value="Dagegen"> Stimme Dagegen</label>
+                        </div>
+                    <?php
+                    break;
+                case "text":
+                    ?>
+                        <textarea class="pure-input-1" name="votedata" placeholder="Stimme..."></textarea>
+                    <?php
+                    break;
+            }
+        ?>
         <div class="pure-button-group" role="group">
-            <a href="/results.php?pin=<?php echo $S_POST["pin"];?>" class="pure-button pure-input-1-3">Enthalten</a>
+            <a href="/results.php?pin=<?php echo $S_GET["pin"];?>" class="pure-button pure-input-1-3">Enthalten</a>
             <button type="submit" class="pure-button pure-button-primary pure-input-2-3">Abgeben</button>
         </div>
       </form>

@@ -21,12 +21,16 @@
       </div>
       <br>
       <?php
-        $filedata = file_get_contents("votes/".$S_GET["pin"] . ".json");
+        $votefile = file_get_contents("votes/".$S_GET["pin"] . ".json");
         
-        $votes = json_decode($filedata, true);
+        $vote = json_decode($votefile, true);
+        
+        echo "<p>".$vote["description"]."</p>";
+        
+        $votes = $vote["votes"];
         
         // display only if we have valid votes
-        if ($votes) {
+        if ($vote) {
             // shuffle
             shuffle($votes);
           
@@ -35,7 +39,6 @@
             $bad_votes = 0;
 
             // additional variables for statistics
-            $adh = '77.23.48.125';
             $votes_external = 0;
 
             echo '<div class="pure-g">';
@@ -45,10 +48,6 @@
                 // extract our data
                 $id = $vote['session-id'];
                 $contents = ucwords(strtolower($vote['contents']));
-
-                if (strcmp($vote['ip'], $adh)) {
-                    $votes_external++;
-                }
 
                 echo "<div class='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-3'>";
 
@@ -77,7 +76,6 @@
             }
             echo "<h2>Statistiken</h2>";
             echo "<p>Anzahl stimmen: ".count($votes)."</p>";
-            echo "<p>Davon außerhalb adH: ".$votes_external."</p>";
         }
         ?>
     </div>
