@@ -11,19 +11,24 @@
   </head>
   <body>
     <div class="content">
+      <?php
+        $votedata = get_vote($S_GET["pin"]);
+      ?>
       <h1>Wahlsystem</h1>
-      <h2>Pin: <?php echo $S_GET["pin"];?></h2>
-      <form class="pure-form pure-form-stacked" action="record-vote.php" method="post">
+      <h2><?php echo $votedata["description"];?></h2>
+      <form class="pure-form pure-form-aligned" action="record-vote.php" method="post">
+        <fieldset>
         <input type="hidden" name="pin" value="<?php echo $S_GET["pin"];?>" />
-        
         <?php
             // here we display different types of voting UIs
-            $type = get_type($S_GET["pin"]);
-            
-            switch ($type) {
+            switch ($votedata["type"]) {
                 case "grade":
                     ?>
-                        <input type="number" name="votedata" min="1" max="6">
+                        <div class="pure-control-group">
+                            <label for="grade">Note</label>
+                            <input id="grade" type="number" name="votedata" min="1" max="5" value="1">
+                            <span class="pure-form-message-inline">Eine Zahl von 1-5</span>
+                        </div>
                     <?php
                     break;
                 case "binary":
@@ -43,10 +48,10 @@
                     break;
             }
         ?>
-        <div class="pure-button-group" role="group">
-            <a href="/results.php?pin=<?php echo $S_GET["pin"];?>" class="pure-button pure-input-1-3">Enthalten</a>
-            <button type="submit" class="pure-button pure-button-primary pure-input-2-3">Abgeben</button>
-        </div>
+            <div class="pure-controls">
+                <button type="submit" class="pure-button pure-button-primary pure-input-2-3">Abgeben</button>
+            </div>
+        </fieldset>
       </form>
       <p>
         Mit der Stimmabgabe bestätige ich mein Stimmrecht und sehe ein dass eine Abgabe permanent ist. Ich bin Einverstanden, dass jeder Wahlgang zwecks Bewertung 7 Tage <b>anonym</b> gespeichert wird, wonach er permanent gelöscht wird.

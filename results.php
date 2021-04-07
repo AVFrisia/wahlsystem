@@ -13,7 +13,9 @@
   </head>
   <body>
     <div class="content">
-      <h1>Ergebnisse für Wahl &#8470; <?php echo $S_GET["pin"] ?></h1>
+      <?php $votedata = get_vote($S_GET["pin"]); ?>
+      <h1>Ergebnisse</h1>
+      <h2><?php echo $votedata["description"]; ?></h2>
       <div class="pure-button-group" role="group">
         <a href="" class="pure-button pure-input-1 pure-button-primary"><i data-eva="refresh" data-eva-fill="#ffffff" data-eva-height="1em"></i> Neuladen</a>
         <a href="/" class="pure-button pure-input-1"><i data-eva="home" data-eva-height="1em"></i> Zurück</a>
@@ -21,16 +23,10 @@
       </div>
       <br>
       <?php
-        $votefile = file_get_contents("votes/".$S_GET["pin"] . ".json");
-        
-        $vote = json_decode($votefile, true);
-        
-        echo "<p>".$vote["description"]."</p>";
-        
-        $votes = $vote["votes"];
+        $votes = $votedata["votes"];
         
         // display only if we have valid votes
-        if ($vote) {
+        if ($votes) {
             // shuffle
             shuffle($votes);
           
