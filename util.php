@@ -4,8 +4,8 @@ if(!isset($_SESSION)) {
 }
   
   // ALWAYS sanitize input ;)
-  $S_POST  = filter_input_array(INPUT_POST);
-  $S_GET  = filter_input_array(INPUT_GET);
+  $S_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+  $S_GET  = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
   
 function pin($length)
 {
