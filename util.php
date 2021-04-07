@@ -16,10 +16,10 @@ function pin($length)
 }
 
 // returns the type of a vote
-function get_type($pin) {
+function get_vote($pin) {
     $file = "votes/".$pin.".json";
     $votedata = json_decode(file_get_contents($file), true);
-    return $votedata["type"];
+    return $votedata;
 }
 
   // auto delete files
