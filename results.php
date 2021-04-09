@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css" />
     <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://unpkg.com/eva-icons"></script>
   </head>
   <body>
     <div class="content">
@@ -17,9 +16,9 @@
       <h1>Ergebnisse</h1>
       <h2><?php echo $votedata["description"]; ?></h2>
       <div class="pure-button-group" role="group">
-        <a href="" class="pure-button pure-input-1 pure-button-primary"><i data-eva="refresh" data-eva-fill="#ffffff" data-eva-height="1em"></i> Neuladen</a>
-        <a href="/" class="pure-button pure-input-1"><i data-eva="home" data-eva-height="1em"></i> Zurück</a>
-        <a href="javascript:if(window.print)window.print()" class="pure-button pure-input-1"><i data-eva="printer" data-eva-height="1em"></i></a>
+        <a href="" class="pure-button pure-input-1 pure-button-primary"><ion-icon name="refresh"></ion-icon> Neuladen</a>
+        <a href="/" class="pure-button pure-input-1"><ion-icon name="home"></ion-icon> Zurück</a>
+        <a href="javascript:if(window.print)window.print()" class="pure-button pure-input-1"><ion-icon name="print"></ion-icon></a>
       </div>
       <br>
       <?php
@@ -75,9 +74,6 @@
         }
         ?>
     </div>
-    <script>
-      eva.replace();
-    </script>
     <?php require "footer.php" ?>
   </body>
 </html>

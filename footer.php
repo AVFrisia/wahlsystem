@@ -3,3 +3,4 @@
   <p style="float: right;">Allzeit Voran!</p>
   <div style="clear: both;"></div>
 </footer>
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

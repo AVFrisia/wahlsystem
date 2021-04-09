@@ -42,11 +42,11 @@
         </div>
         <div class="pure-controls">
             <label for="grade-option" class="pure-radio">
-            <input type="radio" id="grade-option" name="type" value="grade" checked> Note</label>
+            <input type="radio" id="grade-option" name="type" value="grade" checked> <ion-icon name="ribbon"></ion-icon> Note</label>
             <label for="binary-option" class="pure-radio">
-            <input type="radio" id="binary-option" name="type" value="binary"> Ja / Nein</label>
+            <input type="radio" id="binary-option" name="type" value="binary"> <ion-icon name="checkmark"></ion-icon> Ja / Nein</label>
             <label for="text-option" class="pure-radio">
-            <input type="radio" id="text-option" name="type" value="text"> Text</label>
+            <input type="radio" id="text-option" name="type" value="text"> <ion-icon name="document-text"></ion-icon> Text</label>
         </div>
         <div class="pure-controls">
             <button type="submit" class="pure-button pure-button-primary">Starten</button>
