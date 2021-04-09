@@ -30,27 +30,19 @@
 <body>
     <div class="content">
     <h1>Wahl Erstellen</h1>
-    <form class="pure-form pure-form-aligned" action="create-vote.php" method="post">
+    <form class="pure-form pure-form-stacked" action="create-vote.php" method="post">
         <fieldset>
-        <div class="pure-control-group"><label for="pin">PIN</label>
-            <input type="text" name="pin" value="<?php echo $S_POST["pin"] ?>" readonly >
-            <span class="pure-form-message-inline">Diese Zahl muss mitgeteilt werden</span>
-        </div>
-        <div class="pure-control-group">
+            <label for="pin">PIN</label>
+            <input type="text" class="pure-input-1" name="pin" value="<?php echo $S_POST["pin"] ?>" readonly >
             <label for="pin">Beschreibung</label>
-            <input type="text" name="description" value="Wahl <?php echo $S_POST["pin"] ?>" >
-        </div>
-        <div class="pure-controls">
+            <input type="text" class="pure-input-1" name="description" value="Wahl <?php echo $S_POST["pin"] ?>" >
             <label for="grade-option" class="pure-radio">
             <input type="radio" id="grade-option" name="type" value="grade" checked> <ion-icon name="ribbon"></ion-icon> Note</label>
             <label for="binary-option" class="pure-radio">
             <input type="radio" id="binary-option" name="type" value="binary"> <ion-icon name="checkmark"></ion-icon> Ja / Nein</label>
             <label for="text-option" class="pure-radio">
             <input type="radio" id="text-option" name="type" value="text"> <ion-icon name="document-text"></ion-icon> Text</label>
-        </div>
-        <div class="pure-controls">
-            <button type="submit" class="pure-button pure-button-primary">Starten</button>
-        </div>
+            <button type="submit" class="pure-button pure-button-primary pure-input-1">Starten</button>
         </fieldset>
     </form>
 </div>

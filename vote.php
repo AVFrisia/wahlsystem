@@ -16,7 +16,7 @@
       ?>
       <h1>Wahlsystem</h1>
       <h2><?php echo $votedata["description"];?></h2>
-      <form class="pure-form pure-form-aligned" action="record-vote.php" method="post">
+      <form class="pure-form pure-form-stacked" action="record-vote.php" method="post">
         <fieldset>
         <input type="hidden" name="pin" value="<?php echo $S_GET["pin"];?>" />
         <?php
@@ -24,21 +24,22 @@
             switch ($votedata["type"]) {
                 case "grade":
                     ?>
-                        <div class="pure-control-group">
-                            <label for="grade">Note</label>
-                            <input id="grade" type="number" name="votedata" min="1" max="5" value="1">
-                            <span class="pure-form-message-inline">Eine Zahl von 1-5</span>
-                        </div>
+                        <label for="grade">Note</label>
+                        <select id="grade" class="pure-input-1" name="votedata">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
                     <?php
                     break;
                 case "binary":
                     ?>
-                        <div class="pure-controls">
-                            <label for="yes-vote" class="pure-radio">
-                            <input type="radio" id="yes-vote" name="votedata" value="Dafür" checked> Stimme Dafür</label>
-                            <label for="no-vote" class="pure-radio">
-                            <input type="radio" id="no-vote" name="votedata" value="Dagegen"> Stimme Dagegen</label>
-                        </div>
+                        <label for="yes-vote" class="pure-radio">
+                        <input type="radio" id="yes-vote" name="votedata" value="Dafür" checked> Stimme Dafür</label>
+                        <label for="no-vote" class="pure-radio">
+                        <input type="radio" id="no-vote" name="votedata" value="Dagegen"> Stimme Dagegen</label>
                     <?php
                     break;
                 case "text":
@@ -48,9 +49,7 @@
                     break;
             }
         ?>
-            <div class="pure-controls">
-                <button type="submit" class="pure-button pure-button-primary pure-input-2-3">Abgeben</button>
-            </div>
+        <button type="submit" class="pure-button pure-button-primary pure-input-1">Abgeben</button>
         </fieldset>
       </form>
       <p>
@@ -58,9 +57,6 @@
       </p>
       <p>
         Nach Abgabe der Stimme bin ich ebenfalls einverstanden, dass Conventsgeheimnis nach Art. 140 GO zu bewahren.
-      </p>
-      <p>
-        <i>Juristen:</i> bitte diese Seite <b>nicht</b> neu laden!
       </p>
     </div>
     <?php require "footer.php" ?>
