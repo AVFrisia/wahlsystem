@@ -8,7 +8,7 @@ $S_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $S_GET  = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 // Generate a pin
-function pin($length = 4)
+function pin(int $length = 4)
 {
  if ($length == 0) {
   return;
@@ -17,25 +17,25 @@ function pin($length = 4)
 }
 
 // returns the path of a vote based on the pin
-function vote_path($pin)
+function vote_path(string $pin)
 {
  return "votes/" . $pin . ".json";
 }
 
 // retrieve a vote
-function get_vote($pin)
+function get_vote(string $pin)
 {
  $file = vote_path($pin);
  if (file_exists($file)) {
   $votedata = json_decode(file_get_contents($file), true);
   return $votedata;
  } else {
-  throw new Exception('Vote does not exist.');
+  throw new Exception('Vote ' . $pin . ' does not exist.');
  }
 }
 
 // save a vote structure to disk
-function save_vote($vote)
+function save_vote(array $vote)
 {
  $pin  = $vote["pin"];
  $file = vote_path($pin);
@@ -44,7 +44,7 @@ function save_vote($vote)
 }
 
 // Initializes a blank vote
-function initialize_vote($pin, $description, $type)
+function initialize_vote(string $pin, string $description, string $type)
 {
  $vote_data = array(
   "pin"         => $pin,
@@ -56,7 +56,7 @@ function initialize_vote($pin, $description, $type)
 }
 
 // append a vote to the vote file
-function append_vote($pin, $vote_contents)
+function append_vote(string $pin, string $vote_contents)
 {
 
  $vote = get_vote($pin);
