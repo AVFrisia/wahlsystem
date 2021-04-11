@@ -7,12 +7,13 @@ if (!isset($_SESSION)) {
 $S_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $S_GET  = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-function pin($length)
+// Generate a pin
+function pin($length = 4)
 {
  if ($length == 0) {
   return;
  }
- return rand(0, 9) . pin($length - 1);
+ return random_int(0, 9) . pin($length - 1);
 }
 
 // returns the type of a vote
