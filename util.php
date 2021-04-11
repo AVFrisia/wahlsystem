@@ -41,6 +41,7 @@ function save_vote(array $vote)
  $file = vote_path($pin);
  $json = json_encode($vote, JSON_PRETTY_PRINT);
  file_put_contents($file, $json, LOCK_EX);
+ chmod($file, 0600);
 }
 
 // Initializes a blank vote
