@@ -19,7 +19,7 @@ function pin(int $length = 4)
 // returns the path of a vote based on the pin
 function vote_path(string $pin)
 {
- return "votes/" . $pin . ".json";
+ return sys_get_temp_dir() . DIRECTORY_SEPARATOR . $pin . ".json";
 }
 
 // retrieve a vote
