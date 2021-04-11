@@ -65,7 +65,17 @@ if ($votes) {
   echo "<p><b>Achtung:</b> " . $bad_votes . " Stimme(n) wurden von einem Wähler neu gewählt und in <span class='error'>rot</span> markiert.</p>";
  }
  echo "<h2>Statistiken</h2>";
- echo "<p>Anzahl stimmen: " . count($votes) . "</p>";
+ echo "<p><b>Anzahl stimmen:</b> " . count($votes) . "</p>";
+
+ // calculate average if it's a grade
+ if ($votedata["type"] == "grade") {
+  $total = 0;
+  foreach ($votes as $vote) {
+   $total += $vote["contents"];
+  }
+  $average = $total / count($votes);
+  echo "<p><b>Durchschnitt:</b> " . number_format($average, 2) . "</p>";
+ }
 }
 ?>
     </div>
