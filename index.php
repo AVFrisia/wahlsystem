@@ -1,5 +1,5 @@
 <?php
-  require "util.php";
+require "util.php";
 ?>
 <!DOCTYPE html>
 <html lang="de">
