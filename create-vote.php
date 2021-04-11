@@ -1,22 +1,22 @@
 <?php
-  require "util.php";
+require "util.php";
 ?>
 
 <?php
-    // If we have inital data, create the file and redirect to the voting page
-    if (isset($_POST['type'])) {
-        $file = "votes/".$S_POST["pin"].".json";
-        $vote = array(
-            "pin" => $S_POST["pin"],
-            "description" => $S_POST["description"],
-            "type" => $S_POST["type"],
-            "votes" => array(),
-        );
-        
-        file_put_contents($file, json_encode($vote, JSON_PRETTY_PRINT));
-        
-        header('Location: /vote.php?pin=' . $S_POST["pin"]);
-    }
+// If we have inital data, create the file and redirect to the voting page
+if (isset($_POST['type'])) {
+ $file = "votes/" . $S_POST["pin"] . ".json";
+ $vote = array(
+  "pin"         => $S_POST["pin"],
+  "description" => $S_POST["description"],
+  "type"        => $S_POST["type"],
+  "votes"       => array(),
+ );
+
+ file_put_contents($file, json_encode($vote, JSON_PRETTY_PRINT));
+
+ header('Location: /vote.php?pin=' . $S_POST["pin"]);
+}
 ?>
 
 <!DOCTYPE html>
