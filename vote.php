@@ -4,6 +4,7 @@ require "util.php";
 if (isset($S_POST['votedata'])) {
  append_vote($S_POST['pin'], $S_POST['votedata']);
  header('Location: /results.php?pin=' . $S_POST["pin"]);
+ exit();
 }
 ?>
 <!DOCTYPE html>

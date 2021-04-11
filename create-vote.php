@@ -4,6 +4,7 @@ require "util.php";
 if (isset($S_POST['type'])) {
  initialize_vote($S_POST['pin'], $S_POST['description'], $S_POST['type']);
  header('Location: /vote.php?pin=' . $S_POST["pin"]);
+ exit();
 }
 ?>
 
