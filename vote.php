@@ -1,5 +1,10 @@
 <?php
 require "util.php";
+// If we have vote contents, add them to the appropriate file
+if (isset($S_POST['votedata'])) {
+ append_vote($S_POST['pin'], $S_POST['votedata']);
+ header('Location: /results.php?pin=' . $S_POST["pin"]);
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -16,7 +21,7 @@ $votedata = get_vote($S_GET["pin"]);
 ?>
       <h1>Wahlsystem</h1>
       <h2><?php echo $votedata["description"]; ?></h2>
-      <form class="pure-form pure-form-stacked" action="record-vote.php" method="post">
+      <form class="pure-form pure-form-stacked" action="vote.php" method="post">
         <fieldset>
         <input type="hidden" name="pin" value="<?php echo $S_GET["pin"]; ?>" />
         <?php
