@@ -57,17 +57,31 @@ function initialize_vote(string $pin, string $description, string $type)
 }
 
 // append a vote to the vote file
-function append_vote(string $pin, string $vote_contents)
+function append_vote(string $pin, mixed $vote_contents)
 {
-
  $vote = get_vote($pin);
+
+ $parsed = null;
+
+ // parse input depending on type of vote
+ switch ($vote["type"]) {
+  case "grade":
+   $parsed = intval($vote_contents);
+   break;
+  case "binary":
+   $parsed = boolval($vote_contents);
+   break;
+  case "text":
+   $parsed = strval($vote_contents);
+   break;
+ }
 
  // create vote entry
  $vote_entry = [
   "time"       => time(),
   "ip"         => $_SERVER['REMOTE_ADDR'],
   "session-id" => session_id(),
-  "contents"   => $vote_contents,
+  "contents"   => $parsed,
  ];
 
  // add to existing votes
