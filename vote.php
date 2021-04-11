@@ -43,14 +43,14 @@ break;
  case "binary":
   ?>
                         <label for="yes-vote" class="pure-radio">
-                        <input type="radio" id="yes-vote" name="votedata" value="Dafür" checked> Stimme Dafür</label>
+                        <input type="radio" id="yes-vote" name="votedata" value="1" checked> Stimme Dafür</label>
                         <label for="no-vote" class="pure-radio">
-                        <input type="radio" id="no-vote" name="votedata" value="Dagegen"> Stimme Dagegen</label>
+                        <input type="radio" id="no-vote" name="votedata" value="0"> Stimme Dagegen</label>
                     <?php
 break;
  case "text":
   ?>
-                        <textarea class="pure-input-1" name="votedata" placeholder="Stimme..."></textarea>
+                        <textarea class="pure-input-1" name="votedata" placeholder="Stimme..." required></textarea>
                     <?php
 break;
 }
