@@ -34,7 +34,9 @@ if ($votes) {
  $bad_votes = 0;
 
  // additional variables for statistics
- $total = 0;
+ $total   = 0;
+ $for     = 0;
+ $against = 0;
 
  echo '<div class="pure-g">';
 
@@ -52,8 +54,10 @@ if ($votes) {
     break;
    case "binary":
     if ($vote["contents"]) {
+     $for++;
      $contents = "Dafür";
     } else {
+     $against++;
      $contents = "Dagegen";
     }
     break;
@@ -78,17 +82,27 @@ if ($votes) {
 } else {
  echo ('<h2>Wahl existiert nicht!</h2>');
 }
+echo "<hr>";
 if ($votes) {
  if ($bad_votes > 0) {
   echo "<p><b>Achtung:</b> " . $bad_votes . " Stimme(n) wurden von einem Wähler neu gewählt und in <span class='error'>rot</span> markiert.</p>";
  }
- echo "<h2>Statistiken</h2>";
  echo "<p><b>Anzahl stimmen:</b> " . count($votes) . "</p>";
 
  // calculate average if it's a grade
- if ($votedata["type"] == "grade") {
-  $average = $total / count($votes);
-  echo "<p><b>Durchschnitt:</b> " . number_format($average, 2) . "</p>";
+ switch ($votedata["type"]) {
+  case "grade":
+   $average = $total / count($votes);
+   echo "<p><b>Durchschnitt:</b> " . number_format($average, 2) . "</p>";
+   break;
+  case "binary":
+   if ($for > $against) {
+    echo "<p><b>Mehrheit</b> ist dafür (" . $for . " gegen " . $against . ")</p>";
+   } elseif ($for < $against) {
+    echo "<p><b>Mehrheit</b> ist dagegen (" . $against . " gegen " . $for . ")</p>";
+   } else {
+    echo "<p><b>Gleichstand.</b> (" . $for . " gegen " . $against . ")</p>";
+   }
  }
 }
 ?>
