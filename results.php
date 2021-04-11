@@ -34,15 +34,33 @@ if ($votes) {
  $bad_votes = 0;
 
  // additional variables for statistics
- $votes_external = 0;
+ $total = 0;
 
  echo '<div class="pure-g">';
 
  // loop for each vote
  foreach ($votes as $vote) {
   // extract our data
-  $id       = $vote['session-id'];
-  $contents = ucwords(strtolower($vote['contents']));
+  $id = $vote['session-id'];
+
+  // different display methods for different data
+  $contents = null;
+  switch ($votedata["type"]) {
+   case "grade":
+    $total += $vote["contents"];
+    $contents = number_format($vote["contents"], 1);
+    break;
+   case "binary":
+    if ($vote["contents"]) {
+     $contents = "Dafür";
+    } else {
+     $contents = "Dagegen";
+    }
+    break;
+   case "text":
+    $contents = $vote["contents"];
+    break;
+  }
 
   echo "<div class='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-3'>";
 
@@ -69,10 +87,6 @@ if ($votes) {
 
  // calculate average if it's a grade
  if ($votedata["type"] == "grade") {
-  $total = 0;
-  foreach ($votes as $vote) {
-   $total += $vote["contents"];
-  }
   $average = $total / count($votes);
   echo "<p><b>Durchschnitt:</b> " . number_format($average, 2) . "</p>";
  }
