@@ -16,12 +16,64 @@ function pin($length = 4)
  return random_int(0, 9) . pin($length - 1);
 }
 
-// returns the type of a vote
+// returns the path of a vote based on the pin
+function vote_path($pin)
+{
+ return "votes/" . $pin . ".json";
+}
+
+// retrieve a vote
 function get_vote($pin)
 {
- $file     = "votes/" . $pin . ".json";
- $votedata = json_decode(file_get_contents($file), true);
- return $votedata;
+ $file = vote_path($pin);
+ if (file_exists($file)) {
+  $votedata = json_decode(file_get_contents($file), true);
+  return $votedata;
+ } else {
+  throw new Exception('Vote does not exist.');
+ }
+}
+
+// save a vote structure to disk
+function save_vote($vote)
+{
+ $pin  = $vote["pin"];
+ $file = vote_path($pin);
+ $json = json_encode($vote, JSON_PRETTY_PRINT);
+ file_put_contents($file, $json, LOCK_EX);
+}
+
+// Initializes a blank vote
+function initialize_vote($pin, $description, $type)
+{
+ $vote_data = array(
+  "pin"         => $pin,
+  "description" => $description,
+  "type"        => $type,
+  "votes"       => array(),
+ );
+ save_vote($vote_data);
+}
+
+// append a vote to the vote file
+function append_vote($pin, $vote_contents)
+{
+
+ $vote = get_vote($pin);
+
+ // create vote entry
+ $vote_entry = [
+  "time"       => time(),
+  "ip"         => $_SERVER['REMOTE_ADDR'],
+  "session-id" => session_id(),
+  "contents"   => $vote_contents,
+ ];
+
+ // add to existing votes
+ array_push($vote["votes"], $vote_entry);
+
+ // write to the file
+ save_vote($vote);
 }
 
 // auto delete files
