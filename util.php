@@ -19,7 +19,7 @@ function pin(int $length = 4)
 // returns the path of a vote based on the pin
 function vote_path(string $pin)
 {
- return "votes/" . $pin . ".json";
+ return sys_get_temp_dir() . DIRECTORY_SEPARATOR . $pin . ".json";
 }
 
 // retrieve a vote
@@ -41,6 +41,7 @@ function save_vote(array $vote)
  $file = vote_path($pin);
  $json = json_encode($vote, JSON_PRETTY_PRINT);
  file_put_contents($file, $json, LOCK_EX);
+ chmod($file, 0600);
 }
 
 // Initializes a blank vote
@@ -74,23 +75,4 @@ function append_vote(string $pin, string $vote_contents)
 
  // write to the file
  save_vote($vote);
-}
-
-// auto delete files
-$days = 7;
-$path = './votes/';
-
-// Open the directory
-if ($handle = opendir($path)) {
- // Loop through the directory
- while (false !== ($file = readdir($handle))) {
-  // Check the file we're doing is actually a file
-  if (is_file($path . $file)) {
-   // Check if the file is older than X days old
-   if (filemtime($path . $file) < (time() - ($days * 24 * 60 * 60))) {
-    // Do the deletion
-    unlink($path . $file);
-   }
-  }
- }
 }
