@@ -16,21 +16,21 @@ require "util.php";
       <div class="pure-g">
         <div class="pure-u-1 pure-u-md-1-2">
           <div class="l-box">
-            <h2>Wahl Beitreten</h2>
+            <h2><ion-icon name="person-add"></ion-icon> Wahl Beitreten</h2>
             <p>Ich habe schon einen PIN für einen Wahlgang bekommen.</p>
             <form class="pure-form pure-form-stacked" action="vote.php" method="get">
               <input type="number" class="pure-input-1" name="pin" placeholder="PIN" required=""/>
-              <button type="submit" class="pure-button pure-input-1 pure-button-primary">Los <ion-icon name="arrow-forward"></ion-icon></button>
+              <button type="submit" class="pure-button pure-input-1 pure-button-primary">Los</button>
             </form>
           </div>
         </div>
         <div class="pure-u-1 pure-u-md-1-2">
           <div class="l-box">
-            <h2>Neuen Wahlgang Starten</h2>
+            <h2><ion-icon name="rocket"></ion-icon> Neuen Wahlgang Starten</h2>
             <p>Ich möchte einen neuen Wahlgang starten.</p>
             <form class="pure-form pure-form-stacked" action="create-vote.php" method="post">
               <input type="hidden" name="pin" value="<?php echo pin(4) ?>" />
-              <button type="submit" class="pure-button pure-input-1">Los <ion-icon name="arrow-forward"></ion-icon></button>
+              <button type="submit" class="pure-button pure-input-1">Los</button>
             </form>
           </div>
         </div>
