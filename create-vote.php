@@ -34,6 +34,7 @@ if (isset($S_POST['type'])) {
             <button type="submit" class="pure-button pure-button-primary pure-input-1">Starten</button>
         </fieldset>
     </form>
+    <p>Den PIN bitte erst nach dem Starten der Wahl mitteilen</p>
 </div>
 <?php require "footer.php" ?>
 </body>
