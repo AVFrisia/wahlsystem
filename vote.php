@@ -21,7 +21,7 @@ if (isset($S_POST['votedata'])) {
 $votedata = get_vote($S_GET["pin"]);
 ?>
       <h1>Wahlsystem</h1>
-      <h2><?php echo $S_GET["pin"]; ?></h2>
+      <h2>PIN: <?php echo $S_GET["pin"]; ?></h2>
       <h2><?php echo $votedata["description"]; ?></h2>
       <form class="pure-form pure-form-stacked" action="vote.php" method="post">
         <fieldset>
