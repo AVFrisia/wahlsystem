@@ -99,7 +99,7 @@ if ($votes) {
  switch ($votedata["type"]) {
   case "grade":
    $average = $total / $vote_count;
-   echo '<p><ion-icon name="bar-chart"></ion-icon> <b>Durchschnitt:</b> ' . round($average) . '</p>';
+   echo '<p><ion-icon name="bar-chart"></ion-icon> <b>Durchschnitt:</b> ' . round($average) . ' (gerundet auf nächste ganze Zahl)</p>';
    break;
   case "binary":
    $vote_count -= $abstention;
