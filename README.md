@@ -4,12 +4,42 @@
 
 Anonymes, datenbankloses Stimmabgabesystem
 
+## Installation
+
+Erfordert nur ein Server mit mindestens PHP 8. Alle Dateien in dieser Repository können direkt in den Wurzelordner abgelegt werden.
+
 ## Sicherheit
 
 ### HTTPS
 
-Es ist empfohlen, dass HTTPS benutzt wird, damit Wahldaten sowie PINs nur zwischen Wähler und Server sichtbar sind.
+Es ist imperativ, dass HTTPS benutzt wird, damit Wahldaten sowie PINs nur zwischen Wähler und Server sichtbar sind.
 
-### Directory Listings
+### Speicherung der Wahldateien
 
-Damit PINs und Wahldaten geheim bleiben, ist es kritisch Zugang zum Ordner `votes` zu verhindern. Dies wird bei Apache-Servern automatisch durch die `.htaccess` Datei in diesem Repo eingestellt.
+Wahldateien werden im von PHP designierten temporären Verzeichnis gespeichert. Unter Unixoiden Systemen wird die Datei auch mit `0600`-Berechtigungen versehen um vor Zugriff Anderer zu schützen.
+
+## Format
+
+```json
+{
+    "pin": "0520",
+    "description": "Entlastung des Fuxmajors",
+    "type": "grade",
+    "votes": [
+        {
+            "time": 1618270119,
+            "ip": "192.168.1.128",
+            "session-id": "8O3Bjrnr50fzly3Vc0ifku2wuMYnuM8w",
+            "contents": 2
+        }
+        {
+            "time": 1618270123,
+            "ip": "192.168.1.69",
+            "session-id": "TqCPomTL7mI0XSGyxBhLrdVKbWYgh04a",
+            "contents": 1
+        }
+    ]
+}
+```
+
+*Beispiel: 2 eingegangene Stimmen zur Entlastung des Fuxmajors*
