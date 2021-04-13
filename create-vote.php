@@ -2,9 +2,9 @@
 require "util.php";
 // If we have inital data, create the file and redirect to the voting page
 if (isset($S_POST['type'])) {
- initialize_vote($S_POST['pin'], $S_POST['description'], $S_POST['type']);
- header('Location: /vote.php?pin=' . $S_POST["pin"]);
- exit();
+    initialize_vote($S_POST['pin'], $S_POST['description'], $S_POST['type']);
+    header('Location: /vote.php?pin=' . $S_POST["pin"]);
+    exit();
 }
 ?>
 
@@ -28,9 +28,9 @@ if (isset($S_POST['type'])) {
             <label for="grade-option" class="pure-radio">
             <input type="radio" id="grade-option" name="type" value="grade" checked> <ion-icon name="ribbon"></ion-icon> Note</label>
             <label for="binary-option" class="pure-radio">
-            <input type="radio" id="binary-option" name="type" value="binary"> <ion-icon name="checkmark"></ion-icon> Ja / Nein</label>
+            <input type="radio" id="binary-option" name="type" value="binary"> <ion-icon name="checkmark-circle"></ion-icon> Dafür/Dagegen</label>
             <label for="text-option" class="pure-radio">
-            <input type="radio" id="text-option" name="type" value="text"> <ion-icon name="document-text"></ion-icon> Text</label>
+            <input type="radio" id="text-option" name="type" value="text"> <ion-icon name="create"></ion-icon> Text</label>
             <button type="submit" class="pure-button pure-button-primary pure-input-1">Starten</button>
         </fieldset>
     </form>

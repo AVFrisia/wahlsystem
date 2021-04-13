@@ -46,6 +46,8 @@ break;
                         <input type="radio" id="yes-vote" name="votedata" value="1" checked> Stimme Dafür</label>
                         <label for="no-vote" class="pure-radio">
                         <input type="radio" id="no-vote" name="votedata" value="0"> Stimme Dagegen</label>
+                        <label for="abstention-vote" class="pure-radio">
+                        <input type="radio" id="abstention-vote" name="votedata" value="NULL"> Stimme Enthalten</label>
                     <?php
 break;
  case "text":

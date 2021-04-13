@@ -34,9 +34,10 @@ if ($votes) {
  $bad_votes = 0;
 
  // additional variables for statistics
- $total   = 0;
- $for     = 0;
- $against = 0;
+ $total      = 0;
+ $for        = 0;
+ $against    = 0;
+ $abstention = 0;
 
  echo '<div class="pure-g">';
 
@@ -53,10 +54,13 @@ if ($votes) {
     $contents = number_format($vote["contents"], 1);
     break;
    case "binary":
-    if ($vote["contents"]) {
+    if (is_null($vote["contents"])) {
+     $abstention++;
+     $contents = "[Enthalten]";
+    } elseif ($vote["contents"]) {
      $for++;
      $contents = "Dafür";
-    } else {
+    } elseif (!$vote["contents"]) {
      $against++;
      $contents = "Dagegen";
     }
@@ -84,24 +88,27 @@ if ($votes) {
 }
 echo "<hr>";
 if ($votes) {
+ $vote_count = count($votes);
+
  if ($bad_votes > 0) {
-  echo "<p><b>Achtung:</b> " . $bad_votes . " Stimme(n) wurden von einem Wähler neu gewählt und in <span class='error'>rot</span> markiert.</p>";
+  echo '<p><ion-icon name="warning"></ion-icon> <b>Achtung:</b> ' . $bad_votes . ' Stimme(n) wurden von einem Wähler neu gewählt und in <span class="error">rot</span> markiert.</p>';
  }
- echo "<p><b>Anzahl stimmen:</b> " . count($votes) . "</p>";
+ echo '<p><ion-icon name="archive"></ion-icon> <b>Anzahl stimmen:</b> ' . $vote_count . '</p>';
 
  // calculate average if it's a grade
  switch ($votedata["type"]) {
   case "grade":
-   $average = $total / count($votes);
-   echo "<p><b>Durchschnitt:</b> " . number_format($average, 2) . "</p>";
+   $average = $total / $vote_count;
+   echo '<p><ion-icon name="bar-chart"></ion-icon> <b>Durchschnitt:</b> ' . number_format($average, 2) . '</p>';
    break;
   case "binary":
+   $vote_count -= $abstention;
    if ($for > $against) {
-    echo "<p><b>Mehrheit</b> ist dafür (" . $for . " gegen " . $against . ")</p>";
+    echo '<p><ion-icon name="thumbs-up"></ion-icon> <b>' . getMaj($for, $vote_count) . ' </b> ist dafür</p>';
    } elseif ($for < $against) {
-    echo "<p><b>Mehrheit</b> ist dagegen (" . $against . " gegen " . $for . ")</p>";
+    echo '<p><ion-icon name="thumbs-down"></ion-icon> <b>' . getMaj($against, $vote_count) . ' </b> ist dagegen</p>';
    } else {
-    echo "<p><b>Gleichstand.</b> (" . $for . " gegen " . $against . ")</p>";
+    echo '<p><ion-icon name="people"></ion-icon> <b>Gleichstand.</b></p>';
    }
  }
 }

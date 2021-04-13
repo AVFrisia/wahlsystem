@@ -69,6 +69,10 @@ function append_vote(string $pin, mixed $vote_contents)
    $parsed = intval($vote_contents);
    break;
   case "binary":
+   // workaround for abstentions
+   if ($vote_contents == "NULL") {
+    break;
+   }
    $parsed = boolval($vote_contents);
    break;
   case "text":
@@ -89,4 +93,20 @@ function append_vote(string $pin, mixed $vote_contents)
 
  // write to the file
  save_vote($vote);
+}
+
+// Returns a string describing the majority of counted votes to all votes
+function getMaj(int $votes, int $total)
+{
+ if ($votes == $total) {
+  return "Einstimmige Mehrheit";
+ }
+
+ for ($i = $total; $i > 1; $i--) {
+  if (($votes % $i) == 0 && ($total % $i) == 0) {
+   $votes = $votes / $i;
+   $total = $total / $i;
+  }
+ }
+ return $votes . "/" . $total . " Mehrheit";
 }
