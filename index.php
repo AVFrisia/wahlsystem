@@ -36,8 +36,8 @@ require "util.php";
         </div>
       </div>
       <div class="center">
-        <p>"I love democracy."</p>
-        <p><i>&#8213; Emperor Palpatine</i></p>
+        <img class="pure-img" src="/waal.svg" />
+        <p><i>Der Wahl Wal wünscht wunderbare Wahlen.</i></p>
       </div>
     </div>
     <?php require "footer.php"; ?>
