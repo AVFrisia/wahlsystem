@@ -83,8 +83,8 @@ function append_vote(string $pin, mixed $vote_contents)
  // create vote entry
  $vote_entry = [
   "time"       => time(),
-  "ip"         => $_SERVER['REMOTE_ADDR'],
-  "session-id" => session_id(),
+  "ip"         => md5($_SERVER['REMOTE_ADDR']),
+  "session-id" => md5(session_id()),
   "contents"   => $parsed,
  ];
 
