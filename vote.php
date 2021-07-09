@@ -6,60 +6,72 @@ if (isset($S_POST['votedata'])) {
  header('Location: /results.php?pin=' . $S_POST["pin"]);
  exit();
 }
+
+$votedata = get_vote($S_GET["pin"]);
 ?>
 <!DOCTYPE html>
 <html lang="de">
   <head>
     <title>Wahl</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/css/uikit.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/js/uikit-icons.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="content">
-      <?php
-$votedata = get_vote($S_GET["pin"]);
-?>
-      <h1>Wahlsystem</h1>
-      <h2>PIN: <?php echo $S_GET["pin"]; ?></h2>
-      <h2><?php echo $votedata["description"]; ?></h2>
-      <form class="pure-form pure-form-stacked" action="vote.php" method="post">
-        <fieldset>
-        <input type="hidden" name="pin" value="<?php echo $S_GET["pin"]; ?>" />
+    <div class="uk-container uk-container-xsmall uk-margin-medium-top">
+      <h1 class="uk-heading-line uk-text-center"><span>Abstimmen</span></h1>
+      <h2>PIN: <?= $S_GET["pin"]; ?></h2>
+      <h2><?= $votedata["description"]; ?></h2>
+      <form class="uk-form-stacked" action="vote.php" method="post">
+      <div class="uk-margin">
+        <input type="hidden" name="pin" value="<?= $S_GET["pin"]; ?>" />
         <?php
 // here we display different types of voting UIs
 switch ($votedata["type"]) {
  case "grade":
   ?>
-                        <label for="grade">Note</label>
-                        <select id="grade" class="pure-input-1" name="votedata">
+                        <label class="uk-form-label" for="grade">Note</label>
+                        <div class="uk-form-controls">
+                        <select id="grade" class="uk-select" name="votedata">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
                             <option>5</option>
                         </select>
+                        </div>
                     <?php
 break;
  case "binary":
   ?>
-                        <label for="yes-vote" class="pure-radio">
-                        <input type="radio" id="yes-vote" name="votedata" value="1" checked> Stimme Dafür</label>
-                        <label for="no-vote" class="pure-radio">
-                        <input type="radio" id="no-vote" name="votedata" value="0"> Stimme Dagegen</label>
-                        <label for="abstention-vote" class="pure-radio">
-                        <input type="radio" id="abstention-vote" name="votedata" value="NULL"> Stimme Enthalten</label>
+                        <div class="uk-form-label">
+          Entscheidung
+        </div>
+        <div class="uk-form-controls uk-form-controls-text">
+        <label for="yes-vote">
+                        <input class="uk-radio" type="radio" id="yes-vote" name="votedata" value="1" checked> Stimme Dafür</label><br>
+                        <label for="no-vote">
+                        <input class="uk-radio" type="radio" id="no-vote" name="votedata" value="0"> Stimme Dagegen</label><br>
+                        <label for="abstention-vote">
+                        <input class="uk-radio" type="radio" id="abstention-vote" name="votedata" value="NULL"> Stimme Enthalten</label>
+        </div>
+                        
                     <?php
 break;
  case "text":
   ?>
-                        <textarea class="pure-input-1" name="votedata" placeholder="Stimme..." required></textarea>
+                        <textarea class="uk-textarea" name="votedata" placeholder="Stimme..." required></textarea>
                     <?php
 break;
 }
 ?>
-        <button type="submit" class="pure-button pure-button-primary pure-input-1">Abgeben</button>
-        </fieldset>
+        <div class="uk-margin">
+        <div class="uk-form-controls">
+          <button type="submit" class="uk-button uk-button-primary uk-width-expand">Abgeben</button>
+        </div>
+      </div>
+        </div>
       </form>
       <p>
         Mit der Stimmabgabe bestätige ich mein Stimmrecht und sehe ein dass eine Abgabe permanent ist. Ich bin Einverstanden, dass jeder Wahlgang zwecks Bewertung 7 Tage <b>anonym</b> gespeichert wird, wonach er permanent gelöscht wird.
