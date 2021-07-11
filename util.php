@@ -4,20 +4,26 @@ if (!isset($_SESSION)) {
 }
 
 // ALWAYS sanitize input ;)
+global $S_POST;
 $S_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$S_GET  = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+global $S_GET; 
+$S_GET = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 // Generate a pin
-function pin(int $length = 4)
+/**
+ * @return null|string
+ */
+function pin(int $length = 4): string
 {
- if ($length == 0) {
-  return;
+ if ($length == 1) {
+   return strval(random_int(0, 9));
  }
+
  return random_int(0, 9) . pin($length - 1);
 }
 
 // returns the path of a vote based on the pin
-function vote_path(string $pin)
+function vote_path(string $pin): string
 {
  return sys_get_temp_dir() . DIRECTORY_SEPARATOR . $pin . ".json";
 }
@@ -35,7 +41,7 @@ function get_vote(string $pin)
 }
 
 // save a vote structure to disk
-function save_vote(array $vote)
+function save_vote(array $vote): void
 {
  $pin  = $vote["pin"];
  $file = vote_path($pin);
@@ -45,7 +51,7 @@ function save_vote(array $vote)
 }
 
 // Initializes a blank vote
-function initialize_vote(string $pin, string $description, string $type)
+function initialize_vote(string $pin, string $description, string $type): void
 {
  $vote_data = array(
   "pin"         => $pin,
@@ -57,7 +63,7 @@ function initialize_vote(string $pin, string $description, string $type)
 }
 
 // append a vote to the vote file
-function append_vote(string $pin, mixed $vote_contents)
+function append_vote(string $pin, mixed $vote_contents): void
 {
  $vote = get_vote($pin);
 
@@ -83,8 +89,8 @@ function append_vote(string $pin, mixed $vote_contents)
  // create vote entry
  $vote_entry = [
   "time"       => time(),
-  "ip"         => md5($_SERVER['REMOTE_ADDR']),
-  "session-id" => md5(session_id()),
+  "ip"         => sha1($_SERVER['REMOTE_ADDR']),
+  "session-id" => sha1(session_id()),
   "contents"   => $parsed,
  ];
 
@@ -96,7 +102,7 @@ function append_vote(string $pin, mixed $vote_contents)
 }
 
 // Returns a string describing the majority of counted votes to all votes
-function getMaj(int $votes, int $total)
+function getMaj(int $votes, int $total): string
 {
  if ($votes == $total) {
   return "Einstimmige Mehrheit";

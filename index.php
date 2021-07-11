@@ -3,43 +3,34 @@ require "util.php";
 ?>
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <title>Wahl</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css" />
-    <link rel="stylesheet" href="/css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <div class="content">
-      <h1>Wahlsystem</h1>
-      <div class="pure-g">
-        <div class="pure-u-1 pure-u-md-1-2">
-          <div class="l-box">
-            <h2><ion-icon name="person-add"></ion-icon> Wahl Beitreten</h2>
-            <p>Ich habe schon einen PIN für einen Wahlgang bekommen.</p>
-            <form class="pure-form pure-form-stacked" action="vote.php" method="get">
-              <input type="number" class="pure-input-1" name="pin" placeholder="PIN" required=""/>
-              <button type="submit" class="pure-button pure-input-1 pure-button-primary">Los</button>
-            </form>
-          </div>
-        </div>
-        <div class="pure-u-1 pure-u-md-1-2">
-          <div class="l-box">
-            <h2><ion-icon name="rocket"></ion-icon> Neuen Wahlgang Starten</h2>
-            <p>Ich möchte einen neuen Wahlgang starten.</p>
-            <form class="pure-form pure-form-stacked" action="create-vote.php" method="post">
-              <input type="hidden" name="pin" value="<?php echo pin(4) ?>" />
-              <button type="submit" class="pure-button pure-input-1">Los</button>
-            </form>
-          </div>
-        </div>
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.7.28">
+  <title>Wahl</title>
+  <link rel="stylesheet" href="/vendor/uikit/uikit/dist/css/uikit.min.css">
+  <script src="/vendor/uikit/uikit/dist/js/uikit.min.js"></script>
+  <script src="/vendor/uikit/uikit/dist/js/uikit-icons.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="uk-container uk-container-xsmall uk-margin-medium-top">
+      <h1 class="uk-heading-line uk-text-center"><span>Wahlsystem</span></h1>
+    <div uk-grid="" class="uk-child-width-expand@s uk-grid-divider">
+      <div>
+        <h2>Stimme Abgeben</h2>
+        <p>Ich habe schon einen PIN für einen Wahlgang bekommen.</p>
+        <form class="pure-form pure-form-stacked" action="vote.php" method="get">
+          <input type="number" class="uk-input uk-width-auto" name="pin" placeholder="PIN" required=""> <button type="submit" class="uk-button uk-button-primary uk-width-auto">Los</button>
+        </form>
       </div>
-      <div class="center">
-        <img class="pure-img" src="/waal.svg" />
-        <p><i>Der Wahl Wal wünscht wunderbare Wahlen.</i></p>
+      <div>
+        <h2>Neuen Wahlgang Starten</h2>
+        <p>Ich möchte einen neuen Wahlgang starten.</p>
+        <form action="create-vote.php" method="post">
+          <input type="hidden" name="pin" value="<?php echo pin(4) ?>"> <button type="submit" class="uk-button uk-button-default uk-width-expand">Los</button>
+        </form>
       </div>
-    </div>
-    <?php require "footer.php"; ?>
-  </body>
+    </div><img src="/waal.svg">
+    <p><i>Der Wahl Wal wünscht wunderbare Wahlen.</i></p>
+  </div><?php require "footer.php"; ?>
+</body>
 </html>
