@@ -1,0 +1,15 @@
+{
+    "name": "av-frisia/wahlsystem",
+    "description": "Anonymes, datenbankloses Stimmabgabesystem",
+    "type": "project",
+    "require": {
+        "uikit/uikit": "^3.7"
+    },
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "Johannes Arnold",
+            "email": "johannes.arnold@stud.uni-hannover.de"
+        }
+    ]
+}
