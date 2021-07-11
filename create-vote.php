@@ -14,9 +14,9 @@ if (isset($S_POST['type'])) {
     <title>
       Wahl Erstellen
     </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/css/uikit.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.0/dist/js/uikit-icons.min.js"></script>
+    <link rel="stylesheet" href="/vendor/uikit/uikit/dist/css/uikit.min.css">
+    <script src="/vendor/uikit/uikit/dist/js/uikit.min.js"></script>
+    <script src="/vendor/uikit/uikit/dist/js/uikit-icons.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
