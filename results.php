@@ -39,6 +39,11 @@ $votedata = get_vote($S_GET['pin']);
 $votes = $votedata["votes"];
 
 // display only if we have valid votes
+$abstention = null;
+$against = null;
+$bad_votes = null;
+$for = null;
+$total = null;
 if ($votes) {
  // shuffle
  shuffle($votes);
@@ -48,10 +53,6 @@ if ($votes) {
  $bad_votes = 0;
 
  // additional variables for statistics
- $total      = 0;
- $for        = 0;
- $against    = 0;
- $abstention = 0;
 
  echo '<div uk-grid class="uk-margin-top" uk-scrollspy="cls: uk-animation-fade uk-animation-fast; target: .uk-card; repeat: true">';
 
