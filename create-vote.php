@@ -11,7 +11,7 @@ if (isset($S_POST['type'])) {
 }
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
-$twig = new \Twig\Environment($loader);
+$twig = new \Twig\Environment($loader, ['cache' => '.cache']);
 
 echo $twig->render('create-vote.html', ['pin' => pin()]);
 

@@ -4,7 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 require "util.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
-$twig = new \Twig\Environment($loader);
+$twig = new \Twig\Environment($loader, ['cache' => '.cache']);
 
 $votedata = get_vote($S_GET["pin"]);
 
