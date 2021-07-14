@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head lang="de">
+        {% block head %}
+            <title>{% block title %}{% endblock %}</title>
+            <link rel="stylesheet" href="/vendor/uikit/uikit/dist/css/uikit.min.css">
+            <script src="/vendor/uikit/uikit/dist/js/uikit.min.js"></script>
+            <script src="/vendor/uikit/uikit/dist/js/uikit-icons.min.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% endblock %}
+    </head>
+    <body>
+        <h1 class="uk-heading-line uk-text-center uk-margin-top"><span>{{ block('title') }}</span></h1>
+        <div class="uk-container uk-container-xsmall uk-margin-medium-top">
+        {% block content %}{% endblock %}
+        </div>
+        <footer class="uk-section uk-section-muted uk-margin-xlarge-top">
+            <div class="uk-container">
+                {% block footer %}
+                &copy; Copyright 2021 by <a href="http://domain.invalid/">Carl</a>.
+                {% endblock %}
+            </div>
+        </footer>
+    </body>
+</html>

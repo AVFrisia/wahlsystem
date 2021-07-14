@@ -1,6 +1,16 @@
 <?php
+
+require __DIR__ . '/vendor/autoload.php';
+
 require "util.php";
-$votedata = get_vote($S_GET['pin']);
+
+$votedata = get_vote($S_GET["pin"]);
+
+$loader = new \Twig\Loader\FilesystemLoader('templates');
+$twig = new \Twig\Environment($loader);
+
+echo $twig->render('results.html', ['votedata' => $votedata]);
+exit();
 ?>
 <!DOCTYPE html>
 <html lang="de">

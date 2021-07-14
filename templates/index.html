@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Wahlsystem{% endblock %}
+{% block content %}
+<div uk-grid="" class="uk-child-width-expand@s uk-grid-divider">
+<div>
+    <h2>Stimme Abgeben</h2>
+    <p>Ich habe schon einen PIN für einen Wahlgang bekommen.</p>
+    <form class="pure-form pure-form-stacked" action="vote.php" method="get">
+    <input type="number" class="uk-input uk-width-auto" name="pin" placeholder="PIN" required=""> <button type="submit" class="uk-button uk-button-primary uk-width-auto">Los</button>
+    </form>
+</div>
+<div>
+    <h2>Neuen Wahlgang Starten</h2>
+    <p>Ich möchte einen neuen Wahlgang starten.</p>
+    <form action="create-vote.php" method="post">
+    <input type="hidden" name="pin" value="{{ pin }}"> <button type="submit" class="uk-button uk-button-default uk-width-expand">Los</button>
+    </form>
+</div>
+</div><img src="/waal.svg">
+<p><i>Der Wahl Wal wünscht wunderbare Wahlen.</i></p>
+{% endblock %}
