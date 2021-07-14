@@ -6,6 +6,6 @@ require 'util.php';
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader);
 
-echo $twig->render('index.html', ['pin' => pin(4)]);
+echo $twig->render('index.html');
 
 ?>

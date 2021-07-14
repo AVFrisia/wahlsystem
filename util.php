@@ -17,7 +17,7 @@ $S_GET = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 // Generate a pin
 /**
- * @return null|string
+ * @return string
  */
 function pin(int $length = 4): string
 {
@@ -108,7 +108,7 @@ function append_vote(string $pin, mixed $vote_contents): void
 }
 
 // Helper function to find out if someone is resubmitting their vote
-function has_voted(string $pin) {
+function has_voted(string $pin): bool {
   
   $target = sha1(session_id());
   $votedata = get_vote($pin);

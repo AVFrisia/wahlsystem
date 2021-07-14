@@ -11,9 +11,8 @@
 </h2>
 
 <!-- Our voting form -->
-<form class="uk-form-stacked" action="vote.php" method="post">
+<form class="uk-form-stacked" action="vote.php?pin={{ votedata.pin }}" method="post">
   <div class="uk-margin">
-    <input type="hidden" name="pin" value="{{votedata.pin}}" />
     {% if votedata.type == "grade" %}
       <label class="uk-form-label" for="grade">Note</label>
       <div class="uk-form-controls">

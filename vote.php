@@ -23,8 +23,8 @@ if (has_voted($S_GET['pin'])) {
 
 // If we have vote contents, add them to the appropriate file
 if (isset($S_POST['votedata'])) {
-    append_vote($S_POST['pin'], $S_POST['votedata']);
-    header('Location: /results.php?pin=' . $S_POST["pin"]);
+    append_vote($S_GET['pin'], $S_POST['votedata']);
+    header('Location: /results.php?pin=' . $S_GET["pin"]);
     exit();
    }
 

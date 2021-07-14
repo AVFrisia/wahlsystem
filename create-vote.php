@@ -13,6 +13,6 @@ if (isset($S_POST['type'])) {
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader);
 
-echo $twig->render('create-vote.html', ['pin' => $S_POST['pin']]);
+echo $twig->render('create-vote.html', ['pin' => pin()]);
 
 ?>
