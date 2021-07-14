@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Wahl Erstellen{% endblock %}
+{% block content %}
+<form class="uk-form-horizontal" action="create-vote.php" method="post">
+    <div class="uk-margin">
+      <label class="uk-form-label" for="pin">PIN</label>
+      <div class="uk-form-controls">
+        <input type="text" class="uk-input" name="pin" value="{{ pin }}" readonly>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="pin">Beschreibung</label>
+      <div class="uk-form-controls">
+        <input type="text" class="uk-input" name="description" placeholder="Wahl zum Senior..." value="">
+      </div>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-form-label">
+        Art der Wahl
+      </div>
+      <div class="uk-form-controls uk-form-controls-text">
+        <label for="grade-option"><input class="uk-radio" type="radio" id="grade-option" name="type" value="grade" checked> <span uk-icon="hashtag"></span> Note</label><br>
+        <label for="binary-option"><input class="uk-radio" type="radio" id="binary-option" name="type" value="binary"> <span uk-icon="pencil"></span> Dafür/Dagegen</label><br>
+        <label for="text-option"><input class="uk-radio" type="radio" id="text-option" name="type" value="text"> <span uk-icon="comments"></span> Text</label>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-form-controls">
+        <button type="submit" class="uk-button uk-button-primary uk-width-expand">Starten</button>
+      </div>
+    </div>
+</form>
+<div uk-alert="" class="uk-alert-warning">
+    <b>Hinweis:</b> der PIN ist erst <i>nach</i> dem Starten der Wahl gültig.
+</div>
+{% endblock %}

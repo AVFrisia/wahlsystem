@@ -3,7 +3,7 @@
 // Do not show this project on searches
 header("X-Robots-Tag: noindex, nofollow, noarchive", true);
 
-require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 if (!isset($_SESSION)) {
  session_start();
@@ -17,7 +17,7 @@ $S_GET = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 // Generate a pin
 /**
- * @return null|string
+ * @return string
  */
 function pin(int $length = 4): string
 {
@@ -42,7 +42,7 @@ function get_vote(string $pin)
   $votedata = json_decode(file_get_contents($file), true);
   return $votedata;
  } else {
-  throw new Exception('Vote ' . $pin . ' does not exist.');
+   return NULL;
  }
 }
 
@@ -105,6 +105,20 @@ function append_vote(string $pin, mixed $vote_contents): void
 
  // write to the file
  save_vote($vote);
+}
+
+// Helper function to find out if someone is resubmitting their vote
+function has_voted(string $pin): bool {
+  
+  $target = sha1(session_id());
+  $votedata = get_vote($pin);
+
+  foreach ($votedata['votes'] as $vote) {
+    if (in_array($target, $vote)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 // Returns a string describing the majority of counted votes to all votes

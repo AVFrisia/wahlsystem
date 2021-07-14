@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Fehler{% endblock %}
+{% block content %}
+<div class="uk-alert-danger" uk-alert>
+    <h2>{{ title }}</h2>
+    <p>{{ message }}</p>
+</div>
+<a href="/" class="uk-button uk-button-primary uk-width-expand"><span uk-icon="home"></span></a>
+{% endblock %}

@@ -3,7 +3,8 @@
     "description": "Anonymes, datenbankloses Stimmabgabesystem",
     "type": "project",
     "require": {
-        "uikit/uikit": "^3.7"
+        "uikit/uikit": "^3.7",
+        "twig/twig": "^2.0"
     },
     "license": "GPL-3.0-only",
     "authors": [
