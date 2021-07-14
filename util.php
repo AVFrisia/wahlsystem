@@ -3,7 +3,7 @@
 // Do not show this project on searches
 header("X-Robots-Tag: noindex, nofollow, noarchive", true);
 
-require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 if (!isset($_SESSION)) {
  session_start();
