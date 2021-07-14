@@ -1,13 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Ergebnisse{% endblock %}
 {% block content %}
-<h2>
-  {% if votedata.description is not empty %}
-    {{ votedata.description }}
-  {% endif %}
+{% include('votename.html') %}
 
-  <span class="uk-text-muted">[{{ votedata.pin }}]</span>
-</h2>
 <!-- Nice buttons -->
 <div class="uk-button-group">
   <a href="" class="uk-button uk-button-primary" uk-tooltip="Neu laden"><span uk-icon="refresh"></span></a>

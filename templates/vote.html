@@ -1,14 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Abstimmen{% endblock %}
 {% block content %}
-<!-- Display some metadata -->
-<h2>
-  {% if votedata.description is not empty %}
-    {{ votedata.description }}
-  {% endif %}
-
-  <span class="uk-text-muted">[{{ votedata.pin }}]</span>
-</h2>
+{% include('votename.html') %}
 
 <!-- Our voting form -->
 <form class="uk-form-stacked" action="vote.php?pin={{ votedata.pin }}" method="post">

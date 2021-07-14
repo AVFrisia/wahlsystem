@@ -10,15 +10,24 @@
         {% endblock %}
     </head>
     <body>
-        <h1 class="uk-heading-line uk-text-center uk-margin-top"><span>{{ block('title') }}</span></h1>
+        <div class="uk-section uk-section-primary">
+            <h1 class="uk-text-center"><span>{{ block('title') }}</span></h1>
+        </div>
         <div class="uk-container uk-container-xsmall uk-margin-medium-top">
         {% block content %}{% endblock %}
         </div>
         <footer class="uk-section uk-section-muted uk-margin-xlarge-top">
-            <div class="uk-container">
-                {% block footer %}
-                &copy; Copyright 2021 by <a href="http://domain.invalid/">Carl</a>.
-                {% endblock %}
+            <div class="uk-container uk-container-xsmall">
+                <div class="uk-grid-small" uk-grid>
+                    <div class="uk-width-expand">{{ "now"|date("d.m.Y") }}</div>
+                    <div>
+                        <ul class="uk-iconnav">
+                            <li><a href="/" uk-icon="icon: home"></a></li>
+                            <li><a href="https://github.com/av-frisia/wahlsystem" uk-icon="icon: github"></a></li>
+                            <li><a href="https://github.com/j0hax" uk-icon="icon: user"></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </footer>
     </body>
