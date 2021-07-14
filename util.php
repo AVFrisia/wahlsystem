@@ -42,7 +42,7 @@ function get_vote(string $pin)
   $votedata = json_decode(file_get_contents($file), true);
   return $votedata;
  } else {
-  throw new Exception('Vote ' . $pin . ' does not exist.');
+   return NULL;
  }
 }
 
@@ -105,6 +105,20 @@ function append_vote(string $pin, mixed $vote_contents): void
 
  // write to the file
  save_vote($vote);
+}
+
+// Helper function to find out if someone is resubmitting their vote
+function has_voted(string $pin) {
+  
+  $target = sha1(session_id());
+  $votedata = get_vote($pin);
+
+  foreach ($votedata['votes'] as $vote) {
+    if (in_array($target, $vote)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 // Returns a string describing the majority of counted votes to all votes
