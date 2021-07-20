@@ -48,7 +48,7 @@ function save_vote(array $vote): void
 {
  $pin  = $vote["pin"];
  $file = vote_path($pin);
- $json = json_encode($vote, JSON_PRETTY_PRINT);
+ $json = json_encode($vote);
  file_put_contents($file, $json, LOCK_EX);
  chmod($file, 0600);
 }
