@@ -93,7 +93,7 @@ function append_vote(string $pin, mixed $vote_contents): void
  $vote_entry = [
   "time"       => time(),
   "ip"         => sha1($_SERVER['REMOTE_ADDR']),
-  "session-id" => sha1(session_id()),
+  "session-id" => session_id(),
   "contents"   => $parsed,
  ];
 
@@ -107,7 +107,7 @@ function append_vote(string $pin, mixed $vote_contents): void
 // Helper function to find out if someone is resubmitting their vote
 function has_voted(string $pin): bool {
   
-  $target = sha1(session_id());
+  $target = session_id();
   $votedata = get_vote($pin);
 
   foreach ($votedata['votes'] as $vote) {
