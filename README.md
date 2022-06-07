@@ -1,6 +1,6 @@
 # wahlsystem
 
-[![Lint Code Base](https://github.com/AV-Frisia/wahlsystem/actions/workflows/linter.yml/badge.svg)](https://github.com/AV-Frisia/wahlsystem/actions/workflows/linter.yml)
+[![Lint Code Base](https://github.com/AV-Frisia/wahlsystem/actions/workflows/linter.yml/badge.svg)](https://github.com/AV-Frisia/wahlsystem/actions/workflows/linter.yml) [![Docker Image CI](https://github.com/AV-Frisia/wahlsystem/actions/workflows/docker-image.yml/badge.svg)](https://github.com/AV-Frisia/wahlsystem/actions/workflows/docker-image.yml)
 
 Anonymes, datenbankloses Stimmabgabesystem
 
