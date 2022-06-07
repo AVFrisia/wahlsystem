@@ -109,7 +109,7 @@ function has_voted(string $pin): bool {
   $votedata = get_vote($pin);
 
   foreach ($votedata['votes'] as $vote) {
-    if (in_array($target, $vote)) {
+    if ($vote['session-id'] == $target) {
       return true;
     }
   }
