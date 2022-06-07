@@ -4,12 +4,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 session_start();
 
-// ALWAYS sanitize input ;)
-global $S_POST;
-$S_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
-global $S_GET; 
-$S_GET = filter_input_array(INPUT_GET, FILTER_SANITIZE_SPECIAL_CHARS);
-
 // Generate a pin
 /**
  * @return string
