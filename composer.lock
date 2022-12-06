@@ -249,22 +249,22 @@
         },
         {
             "name": "uikit/uikit",
-            "version": "v3.15.12",
+            "version": "v3.15.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uikit/uikit.git",
-                "reference": "c29bd84bd7467417f6f1e8d1fd8042b062f6ebdf"
+                "reference": "bd48c64c8d5251306049a068f3ca66b398de703c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uikit/uikit/zipball/c29bd84bd7467417f6f1e8d1fd8042b062f6ebdf",
-                "reference": "c29bd84bd7467417f6f1e8d1fd8042b062f6ebdf",
+                "url": "https://api.github.com/repos/uikit/uikit/zipball/bd48c64c8d5251306049a068f3ca66b398de703c",
+                "reference": "bd48c64c8d5251306049a068f3ca66b398de703c",
                 "shasum": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-main": "3.0.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -275,7 +275,7 @@
             "homepage": "https://getuikit.com/",
             "support": {
                 "issues": "https://github.com/uikit/uikit/issues",
-                "source": "https://github.com/uikit/uikit/tree/v3.15.12"
+                "source": "https://github.com/uikit/uikit/tree/v3.15.16"
             },
             "funding": [
                 {
@@ -283,7 +283,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-11-04T13:59:30+00:00"
+            "time": "2022-12-05T16:05:04+00:00"
         }
     ],
     "packages-dev": [],
