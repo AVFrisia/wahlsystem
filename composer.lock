@@ -249,16 +249,16 @@
         },
         {
             "name": "uikit/uikit",
-            "version": "v3.16.22",
+            "version": "v3.16.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uikit/uikit.git",
-                "reference": "b5273d3b4d7aa5ed18959a4ee828dec2ac01d3a4"
+                "reference": "a69e88d536ce9c4351643b9cc18aa4b21a4b8f94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uikit/uikit/zipball/b5273d3b4d7aa5ed18959a4ee828dec2ac01d3a4",
-                "reference": "b5273d3b4d7aa5ed18959a4ee828dec2ac01d3a4",
+                "url": "https://api.github.com/repos/uikit/uikit/zipball/a69e88d536ce9c4351643b9cc18aa4b21a4b8f94",
+                "reference": "a69e88d536ce9c4351643b9cc18aa4b21a4b8f94",
                 "shasum": ""
             },
             "type": "library",
@@ -275,7 +275,7 @@
             "homepage": "https://getuikit.com/",
             "support": {
                 "issues": "https://github.com/uikit/uikit/issues",
-                "source": "https://github.com/uikit/uikit/tree/v3.16.22"
+                "source": "https://github.com/uikit/uikit/tree/v3.16.24"
             },
             "funding": [
                 {
@@ -283,7 +283,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-22T09:58:26+00:00"
+            "time": "2023-08-01T09:19:00+00:00"
         }
     ],
     "packages-dev": [],
