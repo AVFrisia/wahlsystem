@@ -1,6 +1,11 @@
-FROM composer:latest AS composer
-COPY . .
-RUN composer install --no-dev
+FROM php:8.2-apache
 
-FROM  php:8-apache
-COPY --from=composer /app /var/www/html
+WORKDIR /var/www/html
+
+COPY . .
+
+RUN composer install --no-dev --optimize-autoloader
+
+EXPOSE 80
+
+CMD ["apache2-foreground"]
